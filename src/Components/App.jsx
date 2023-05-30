@@ -1,7 +1,10 @@
 import { ThemeProvider } from 'styled-components'
 import Header from "./Header"
+import Card from './Cart';
+import Footer from './Footer';
 import { Container } from "./Styles/Container.styled"
 import GlobalStyles from "./Styles/Global";
+import content from '../content'
 
 const theme = {
     colors: {
@@ -9,6 +12,7 @@ const theme = {
         body: '#fff',
         footer: '#003333',
     },
+    mobile: '768px'
 }
 
 export default function App(){
@@ -18,8 +22,11 @@ export default function App(){
                 <GlobalStyles />
                     <Header />
                     <Container>
-                        <h1>El Psy Kongroo</h1>
+                        {content.map((item, index) => 
+                            <Card key={index} item={item}/>
+                        )}
                     </Container>
+                    <Footer />
             </>
         </ThemeProvider>
     )
